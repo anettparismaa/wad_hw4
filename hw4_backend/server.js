@@ -96,14 +96,14 @@ app.put('/api/posts/:id', async(req, res) => {
 
 
 
-// delete a post based on its id
-app.delete('/api/posts/:id', async(req, res) => {
+// delete all posts
+app.delete('/api/posts', async(req, res) => {
     try {
-        const { id } = req.params;
+        //const { id } = req.params;
         //const post = req.body; // we do not need a body for a delete request
-        console.log("delete a post request has arrived");
+        console.log("delete all posts request has arrived");
         const deletepost = await pool.query(
-            "DELETE FROM posttable WHERE id = $1", [id]
+            "DELETE FROM posttable"
         );
         res.json(deletepost);
     } catch (err) {
