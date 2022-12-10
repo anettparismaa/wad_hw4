@@ -9,6 +9,7 @@
       <div class="post">
           <h3>  Title:  {{post.title}} </h3>
           <p>  <b> Body: </b> {{post.body}} </p>
+          <p>  <b> Time: </b> {{post.time}} </p>
       </div>
     </div>
   </div>

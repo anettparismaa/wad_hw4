@@ -12,6 +12,8 @@
   </template>
   
   <script>
+import { getTransitionRawChildren } from 'vue';
+
   export default {
     name: "AddPost",
     data() {
@@ -20,6 +22,7 @@
           title: "",
           body: "",
           urllink: "",
+          timestamp: this.getTime(),
         },
       };
     },
@@ -29,6 +32,7 @@
           title: this.post.title,
           body: this.post.body,
           urllink: this.post.urllink,
+          timestamp: this.getTime()
         };
         // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
         fetch("http://localhost:3000/api/posts", {
@@ -48,6 +52,14 @@
           console.log("error");
         });
       },
+      getTime: function() {
+                    const today = new Date();
+                    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    const dateTime = date +' '+ time;
+                    //this.timestamp = dateTime;
+                    return dateTime;
+                }
     },
   };
   </script>
