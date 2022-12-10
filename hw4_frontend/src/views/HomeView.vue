@@ -3,13 +3,16 @@
     <div class="container">
     <button v-if = "authResult" @click="Logout" class="center">Logout</button>
     <button v-if = "authResult" @click="Addpost" class="center">Add post</button>
-    <button v-if = "authResult" @click="Deleteposts" class="center">Kill switch</button>
+    <button v-if = "authResult" @click="Deleteposts" class="center">Delete All</button>
     </div>
-    <div class="post-list" v-for="post in posts"   :key="post.index">  
-      <div class="post">
-          <h3>  Title:  {{post.title}} </h3>
-          <p>  <b> Body: </b> {{post.body}} </p>
-          <p>  <b> Time: </b> {{post.time}} </p>
+    <div class="post-list" v-for="post in posts" :key="post.id">  
+      <div class="post" :href="'/apost/' + post.id">
+        <header>
+          <h3> {{post.title}} </h3>
+          <p class="time"> {{post.time}} </p>
+        </header>  
+          <p class="postBody"> {{post.body}} </p>
+          
       </div>
     </div>
   </div>
@@ -86,20 +89,39 @@ body{
   position: relative;
 }
 .post-list{
-  background: rgb(189, 212, 199);
+  background: rgb(167, 196, 179);
   margin-bottom: 5px;
   padding: 3px 5px;
   border-radius: 10px;
+  width: 70%;
+  position: relative;
+  padding: 10px;
+  margin: 10px auto;
 }
-h3{
-    margin: 0;
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+h3 {
+  margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   color: #444;
-  background: #7e9756;
 }
-p{
-  background: #796dbd;
+.time {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+.postBody {
+  width: 70%;
+  position: relative;
+  padding: 10px;
+  margin: 10px auto;
+  text-align: left;
+  white-space: initial;
+  word-wrap: break-word;
 }
 h1, h2, h3, h4, ul, li, a, input, label, button, div, footer{
   margin: 0;
@@ -107,7 +129,7 @@ h1, h2, h3, h4, ul, li, a, input, label, button, div, footer{
   font-family: 'Quicksand', sans-serif;
   color: #444;
 }
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -140,11 +162,12 @@ nav{
   align-items: center;
 }
 .post {
-    width: 80%;
+    width: 70%;
     position: relative;
     padding: 10px;
     margin: 10px auto;
     border: 1px solid gray;
+    border-radius: 0.4em;
     text-align: left;
 }
 .center {

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AllPosts from "../views/AllPosts.vue";
 import APost from "../views/APost.vue";
 import AddPost from "../views/AddPost.vue";
 import HomeView from "../views/HomeView.vue";
@@ -32,9 +31,9 @@ const routes = [{
     component: AddPost,
 },
 {
-    path: "/allposts",
-    name: "AllPosts",
-    component: AllPosts,
+    path: "/apost/:id",
+    name: "APost",
+    component: APost,
 },
 {
   path: "/login",
