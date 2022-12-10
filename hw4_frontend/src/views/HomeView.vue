@@ -2,6 +2,7 @@
   <div class="header">
     <div class="container">
     <button v-if = "authResult" @click="Logout" class="center">Logout</button>
+    <button v-if = "authResult" @click="Addpost" class="center">Add post</button>
     </div>
     <div class="post-list" v-for="post in posts"   :key="post.index">  
       <div class="post">
@@ -44,13 +45,21 @@ export default {
         console.log("error logout");
       });
     },
-  }, 
-  mounted() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+    Addpost() {
+      this.$router.push('/addpost')
+    },
+    fetchPosts() {
+      fetch(`http://localhost:3000/api/posts/`)
         .then((response) => response.json())
-        .then(data => this.posts = data)
-        .catch(err => console.log(err.message))
-    }
+        .then((data) => (this.posts = data))
+        .catch((err) => console.log(err.message));
+    },
+    },
+    mounted() {
+      // call fetchPosts() when this element (HomeView) mounts 
+      this.fetchPosts();
+      console.log("mounted");
+    },
 };
 </script>
 

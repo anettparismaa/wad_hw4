@@ -25,6 +25,7 @@ const generateJWT = (id) => {
         //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
 }
 
+//create a new post
 app.post('/api/posts', async(req, res) => {
     try {
         console.log("a post request has arrived");
@@ -42,8 +43,7 @@ app.post('/api/posts', async(req, res) => {
 }); 
 
 
-
-// Task 2
+// fetch all posts
 app.get('/api/posts', async(req, res) => {
     try {
         console.log("get posts request has arrived");
@@ -58,7 +58,7 @@ app.get('/api/posts', async(req, res) => {
 
 
 
-// Task 3
+// fetch a post based on its id
 app.get('/api/posts/:id', async(req, res) => {
     try {
         console.log("get a post with route parameter  request has arrived");
@@ -79,7 +79,7 @@ app.get('/api/posts/:id', async(req, res) => {
 
 
 
-// Task 4
+// update a post based on its id
 app.put('/api/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -96,7 +96,7 @@ app.put('/api/posts/:id', async(req, res) => {
 
 
 
-// Task 5
+// delete a post based on its id
 app.delete('/api/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -130,13 +130,13 @@ app.get('/auth/authenticate', async(req, res) => {
                     console.log('token is not verified');
                     res.send({ "authenticated": authenticated }); // authenticated = false
                 } else { // token exists and it is verified 
-                    console.log('author is authinticated');
+                    console.log('author is authenticated');
                     authenticated = true;
                     res.send({ "authenticated": authenticated }); // authenticated = true
                 }
             })
         } else { //applies when the token does not exist
-            console.log('author is not authinticated');
+            console.log('author is not authenticated');
             res.send({ "authenticated": authenticated }); // authenticated = false
         }
     } catch (err) {
@@ -149,7 +149,7 @@ app.get('/auth/authenticate', async(req, res) => {
 app.post('/auth/signup', async(req, res) => {
     try {
         console.log("a signup request has arrived");
-        //console.log(req.body);
+        console.log(req.body);
         const { email, password } = req.body;
 
         const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
@@ -173,11 +173,17 @@ app.post('/auth/signup', async(req, res) => {
     }
 });
 
+
+//login user
 app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;
+        console.log(email);
+        console.log("Email üleval")
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        console.log(user)
+        console.log("nohh!!");
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
 
         /* 
@@ -191,11 +197,15 @@ app.post('/auth/login', async(req, res) => {
         */
 
         //Checking if the password is correct
+        console.log("nohh!!");
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
+        console.log("nohh!!");
         //console.log("validPassword:" + validPassword);
         if (!validPassword) return res.status(401).json({ error: "Incorrect password" });
-
+        console.log(user);
+        console.log("kahe nohhi vahel");
         const token = await generateJWT(user.rows[0].id);
+        console.log(token);
         res
             .status(201)
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
