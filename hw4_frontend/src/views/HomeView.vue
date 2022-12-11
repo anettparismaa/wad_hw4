@@ -13,7 +13,7 @@
             <p class="time"> {{ post.time }} </p>
           </header>
           <p class="postBody"> {{ post.body }} </p>
-          <span class="url"> <b>Url:</b> {{ post.urllink }} </span> <br />
+          <!-- <span class="url"> <b>Url:</b> {{ post.urllink }} </span> <br /> -->
         </div>
       </a>
     </div>
