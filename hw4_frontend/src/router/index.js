@@ -31,7 +31,7 @@ const routes = [{
     component: AddPost,
 },
 {
-    path: "/apost/:id",
+    path: "/api/apost/:id",
     name: "APost",
     component: APost,
 },
