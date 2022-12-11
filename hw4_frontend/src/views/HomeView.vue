@@ -5,14 +5,15 @@
       <button v-if="authResult" @click="Addpost" class="center">Add post</button>
       <button v-if="authResult" @click="Deleteposts" class="center">Delete All</button>
     </div>
-    <div class="post-list" v-for="post in posts" :key="post.id">
-      <a class="singlepost" :href="'/api/apost/' + post.id">
+    <div class="post-list" >
+      <a class="singlepost"  v-for="post in posts" :key="post.id" :href="'/api/apost/' + post.id">
         <div class="post">
           <header>
             <h3> {{ post.title }} </h3>
             <p class="time"> {{ post.time }} </p>
           </header>
           <p class="postBody"> {{ post.body }} </p>
+          <span class="url"> <b>Url:</b> {{ post.urllink }} </span> <br />
         </div>
       </a>
     </div>
@@ -91,14 +92,10 @@ body {
 }
 
 .post-list {
-  background: rgb(167, 196, 179);
-  margin-bottom: 5px;
-  padding: 3px 5px;
-  border-radius: 10px;
-  width: 70%;
+  margin-inline: auto;
+  width: min(70%, 800px);
   position: relative;
-  padding: 10px;
-  margin: 10px auto;
+
 }
 
 header {
@@ -185,6 +182,7 @@ nav {
 }
 
 .post {
+  background: rgb(167, 196, 179);
   width: 70%;
   position: relative;
   padding: 10px;
@@ -192,6 +190,9 @@ nav {
   border: 1px solid gray;
   border-radius: 0.4em;
   text-align: left;
+  padding: 10px;
+
+  border-radius: 10px;
 }
 
 .center {
@@ -209,6 +210,7 @@ nav {
 }
 
 .singlepost{
+  
   text-decoration: none;
 }
 </style>

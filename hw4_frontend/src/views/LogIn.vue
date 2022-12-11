@@ -1,15 +1,16 @@
 <template>
-    <div class="form">
+    <form @submit="LogIn" class="form">
       <h3>LogIn</h3>
       <label for="email">Email</label>
       <input type="email" name="email"  required v-model="email">
       <label for="password">Password</label>
       <input type="password" name="password" required v-model="password">
       <div class="container">
-        <button @click="LogIn"  class="center">LogIn</button>
+        <input id="submit" type="submit" value="LogIn" />
+        <!-- <button @click="LogIn"  class="center">LogIn</button> -->
         <button @click='this.$router.push("/signup")' class="center">Signup</button>
       </div>
-    </div>
+    </form>
   </template>
   
   <script>
@@ -86,23 +87,21 @@
     border-bottom: 1px solid white;
     color: blue;
   }
-  button {
+
+
+  button, input[type='submit'] {
     background: rgb(8, 110, 110);
     border: 0;
+    width: unset;
+    margin-inline: auto;
     padding: 10px 20px;
-    margin: 20px 20px 20px 20px;
+    margin-top: 20px;
     color: white;
     border-radius: 20px;
     align-items: center;
     text-align: center;
   }
-  .center {
-    margin: auto;
-    border: 0;
-    padding: 10px 20px;
-    margin-top: 20px;
-    width: 30%; 
-  }
+
   .container {
     display: flex;
     justify-content: center;

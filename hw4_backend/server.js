@@ -94,7 +94,19 @@ app.put('/api/posts/:id', async(req, res) => {
     }
 });
 
-
+app.delete('/api/posts/:id', async(req, res) => {
+    try {
+        const { id } = req.params;
+        //const post = req.body; // we do not need a body for a delete request
+        console.log("delete a post request has arrived");
+        const deletepost = await pool.query(
+            "DELETE FROM posttable WHERE id = $1", [id]
+        );
+        res.json(deletepost);
+    } catch (err) {
+        console.error(err.message);
+    }
+}); 
 
 // delete all posts
 app.delete('/api/posts', async(req, res) => {
@@ -109,7 +121,9 @@ app.delete('/api/posts', async(req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-}); 
+});
+
+
 
 
 app.listen(port, () => {
@@ -151,7 +165,9 @@ app.post('/auth/signup', async(req, res) => {
         console.log("a signup request has arrived");
         console.log(req.body);
         const { email, password } = req.body;
-
+        const alreadyInDatabase = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        console.log(alreadyInDatabase.rowCount);
+        if (alreadyInDatabase.rowCount != 0) return res.status(401).json({ error: "Email is already registered"});
         const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
         const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt 
         const authUser = await pool.query( // insert the user and the hashed password into the database
@@ -167,6 +183,7 @@ app.post('/auth/signup', async(req, res) => {
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
             .json({ user_id: authUser.rows[0].id })
             .send;
+        
     } catch (err) {
         console.error(err.message);
         res.status(400).send(err.message);

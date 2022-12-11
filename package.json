@@ -1,0 +1,12 @@
+{
+  "name": "wad_hw4",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "install": "concurrently \"cd hw4_backend && npm i\" \"cd hw4_frontend && npm i\"",
+    "dev": "concurrently \"cd hw4_backend && npm run start\" \"cd hw4_frontend && npm run serve\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

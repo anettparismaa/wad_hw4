@@ -1,12 +1,13 @@
 <template>
-    <div class="form">
+    <form @submit="SignUp" class="form">
       <h3>SignUp</h3>
       <label for="email">Email</label>
       <input type="email" name="email"  required v-model="email">
       <label for="password">Password</label>
       <input type="password" name="password" required v-model="password">
-      <button @click="SignUp" class="SignUp">SignUp</button>
-    </div>
+      <!-- <button @click="SignUp" class="SignUp">SignUp</button> -->
+      <input id="submit" type="submit" value="Signup" />
+    </form>
   </template>
   
   <script>
@@ -22,7 +23,8 @@
     methods: {
   
   
-  SignUp() {
+  SignUp(event) {
+    event.preventDefault();
         var data = {
           email: this.email,
           password: this.password
@@ -82,9 +84,11 @@
     border-bottom: 1px solid white;
     color: blue;
   }
-  button {
+  input[type='submit'] {
     background: rgb(8, 110, 110);
     border: 0;
+    width: unset;
+    margin-inline: auto;
     padding: 10px 20px;
     margin-top: 20px;
     color: white;
@@ -92,4 +96,5 @@
     align-items: center;
     text-align: center;
   }
+
   </style>
