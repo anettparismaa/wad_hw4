@@ -196,11 +196,7 @@ app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;
-        console.log(email);
-        console.log("Email üleval")
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-        console.log(user)
-        console.log("nohh!!");
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
 
         /* 
@@ -214,13 +210,9 @@ app.post('/auth/login', async(req, res) => {
         */
 
         //Checking if the password is correct
-        console.log("nohh!!");
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
-        console.log("nohh!!");
         //console.log("validPassword:" + validPassword);
         if (!validPassword) return res.status(401).json({ error: "Incorrect password" });
-        console.log(user);
-        console.log("kahe nohhi vahel");
         const token = await generateJWT(user.rows[0].id);
         console.log(token);
         res
