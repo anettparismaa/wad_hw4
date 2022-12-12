@@ -187,12 +187,15 @@ nav {
   position: relative;
   padding: 10px;
   margin: 10px auto;
-  
   border-radius: 0.4em;
   text-align: left;
   padding: 10px;
 
   border-radius: 10px;
+}
+
+.post p {
+  font: 1em sans-serif;
 }
 
 .center {

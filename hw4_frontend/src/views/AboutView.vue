@@ -8,8 +8,14 @@
 </template>
 
 <script>
+import auth from "../auth";
 export default {
   name: "AboutView",
+  data() {
+      return {
+        authResult: auth.authenticated()
+      };
+    },
 }
 </script>
 
