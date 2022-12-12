@@ -95,7 +95,7 @@ import auth from "../auth";
     box-sizing: border-box;
     border: none;
     border-bottom: 1px solid white;
-    color: blue;
+    color: #2c3e50;
     min-height: 70px;
   }
   .addPost {

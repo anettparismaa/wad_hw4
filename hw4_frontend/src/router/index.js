@@ -7,7 +7,8 @@ import LogIn from "../views/LogIn.vue";
 import auth from "../auth";
 
 
-const routes = [{
+const routes = [
+{
   path: "/",
   name: "home",
   component: HomeView,
@@ -29,6 +30,14 @@ const routes = [{
     path: "/addpost",
     name: "AddPost",
     component: AddPost,
+    beforeEnter: async(to, from, next) => {
+        let authResult = await auth.authenticated();
+        if (!authResult) {
+            next('/login')
+        } else {
+            next();
+        }
+    }
 },
 { 
     path: "/api/apost/:id",

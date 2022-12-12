@@ -197,8 +197,10 @@ app.post('/auth/login', async(req, res) => {
         console.log("a login request has arrived");
         const { email, password } = req.body;
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-        if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
-
+        if (user.rows.length === 0) {
+            console.log("user is not registered");
+            return res.status(401).json({ error: "User is not registered" });
+        }
         /* 
         To authenticate users, you will need to compare the password they provide with the one in the database. 
         bcrypt.compare() accepts the plain text password and the hash that you stored, along with a callback function. 
@@ -214,7 +216,7 @@ app.post('/auth/login', async(req, res) => {
         //console.log("validPassword:" + validPassword);
         if (!validPassword) return res.status(401).json({ error: "Incorrect password" });
         const token = await generateJWT(user.rows[0].id);
-        console.log(token);
+        console.log("Token ", token);
         res
             .status(201)
             .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
