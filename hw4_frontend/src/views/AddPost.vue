@@ -13,6 +13,7 @@
   
   <script>
 import { getTransitionRawChildren } from 'vue';
+import auth from "../auth";
 
   export default {
     name: "AddPost",
@@ -24,6 +25,7 @@ import { getTransitionRawChildren } from 'vue';
           urllink: "",
           timestamp: this.getTime(),
         },
+        authResult: auth.authenticated()
       };
     },
     methods: {

@@ -1,6 +1,9 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="text">
+      <h3>This is an about page</h3>
+      <h3>"Contains basic contact information"</h3>
+    </div>
   </div>
 </template>
 
@@ -9,3 +12,18 @@ export default {
   name: "AboutView",
 }
 </script>
+
+<style>
+.about {
+  background-color: hwb(141 53% 16% / 0.466);
+  margin-inline: auto;
+  width: min(70%, 800px);
+  position: relative;
+  border-radius: 0.25em;
+}
+
+.text {
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+</style>

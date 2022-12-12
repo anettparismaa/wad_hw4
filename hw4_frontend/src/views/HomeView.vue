@@ -107,7 +107,7 @@ h3 {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  color: #444;
+  color: #2c3e50;
 }
 
 .time {
@@ -141,7 +141,7 @@ footer {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  color: #444;
+  color: #2c3e50;
 }
 
 nav {
@@ -182,12 +182,12 @@ nav {
 }
 
 .post {
-  background: rgb(167, 196, 179);
+  background: hwb(141 53% 16% / 0.466);
   width: 70%;
   position: relative;
   padding: 10px;
   margin: 10px auto;
-  border: 1px solid gray;
+  
   border-radius: 0.4em;
   text-align: left;
   padding: 10px;
@@ -202,11 +202,18 @@ nav {
   margin-top: 20px;
   margin: 10px auto;
   width: 30%;
+
+}
+.center:hover {
+  background-color: hwb(141 53% 16% / 0.758);
+  transition: background-color 0.25s linear;
 }
 
 .container {
   display: flex;
   justify-content: center;
+  width: 100%;
+  
 }
 
 .singlepost{
