@@ -2,8 +2,7 @@
   <div class="header">
     <div class="container">
       <button v-if="authResult" @click="Logout" class="center">Logout</button>
-      <button v-if="authResult" @click="Addpost" class="center">Add post</button>
-      <button v-if="authResult" @click="Deleteposts" class="center">Delete All</button>
+
     </div>
     <div class="post-list" >
       <a class="singlepost"  v-for="post in posts" :key="post.id" :href="'/api/apost/' + post.id">
@@ -16,6 +15,10 @@
           <!-- <span class="url"> <b>Url:</b> {{ post.urllink }} </span> <br /> -->
         </div>
       </a>
+    </div>
+    <div class="container">
+      <button v-if="authResult" @click="Addpost" class="addbutton">Add post</button>
+      <button v-if="authResult" @click="Deleteposts" class="deletebutton">Delete All</button>
     </div>
   </div>
 </template>
@@ -165,7 +168,6 @@ label {
 }
 
 button {
-  margin-top: 30px;
   border-radius: 36px;
   background: #FEE996;
   border: 0;
@@ -174,6 +176,8 @@ button {
   display: block;
   padding: 10px 16px;
   letter-spacing: 2px;
+  max-width: 10em;
+  margin: 2em 5em;
 }
 
 nav {
@@ -198,7 +202,8 @@ nav {
   font: 1em sans-serif;
 }
 
-.center {
+.center,
+.logoutbutton{
   margin: auto;
   border: 0;
   padding: 10px 20px;
@@ -207,7 +212,10 @@ nav {
   width: 30%;
 
 }
-.center:hover {
+.center:hover, 
+.logoutbutton:hover,
+.addbutton:hover,
+.deletebutton:hover {
   background-color: hwb(141 53% 16% / 0.758);
   transition: background-color 0.25s linear;
 }
@@ -216,7 +224,28 @@ nav {
   display: flex;
   justify-content: center;
   width: 100%;
-  
+}
+.addbutton
+.deletebutton{
+  display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: rgba(85, 85, 85, 0.502);
+    border: none;
+    color: #f2f2f2;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 4vh;
+    box-sizing: border-box;
+    margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 .singlepost{

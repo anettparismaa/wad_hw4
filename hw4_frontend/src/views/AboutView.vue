@@ -10,7 +10,7 @@
 <script>
 import auth from "../auth";
 export default {
-  name: "AboutView",
+  name: "ContactUs",
   data() {
       return {
         authResult: auth.authenticated()
