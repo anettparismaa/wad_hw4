@@ -1,17 +1,16 @@
 <template>
-    <form @submit="LogIn" class="form">
-      <h3>LogIn</h3>
-      <label for="email">Email</label>
-      <input type="email" name="email"  required v-model="email">
-      <label for="password">Password</label>
-      <input type="password" name="password" required v-model="password">
-      <div class="container">
-        <input id="submit" type="submit" value="LogIn" />
-        <!-- <button @click="LogIn"  class="center">LogIn</button> -->
-        <button @click='this.$router.push("/signup")' class="center">Signup</button>
-      </div>
-    </form>
-  </template>
+  <div class="form">
+    <h3>LogIn</h3>
+    <label for="email">Email</label>
+    <input type="email" name="email"  required v-model="email">
+    <label for="password">Password</label>
+    <input type="password" name="password" required v-model="password">
+    <div class="container">
+      <button @click="LogIn"  class="center">LogIn</button>
+      <button @click='this.$router.push("/signup")' class="center">Signup</button>
+    </div>
+  </div>
+</template>
   
   <script>
   export default {
