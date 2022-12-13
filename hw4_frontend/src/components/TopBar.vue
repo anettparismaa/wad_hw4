@@ -2,7 +2,7 @@
     <div class="topnav">
       <nav class="menu-left">
         <router-link to="/">Home</router-link>
-      <router-link to="/contactus">Contact us</router-link>
+      <router-link to="/contactus">Contact</router-link>
       </nav>
     </div>
   </template>

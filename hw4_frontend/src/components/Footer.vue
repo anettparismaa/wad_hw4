@@ -12,17 +12,7 @@
 </script>
   <style scoped>
  
-/*   .footer {
-    max-width: 420px;
-    background-color: hwb(141 53% 16% / 0.466);
-    height: 10%;
-    width: 100%;
-    border-radius: 0.25em;
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  } */
+
   .footer {
     background-color: hwb(141 53% 16% / 0.466);
     bottom : 2px;  

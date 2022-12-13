@@ -6,7 +6,7 @@
       <label for="password">Password</label>
       <input type="password" name="password" required v-model="password">
       <!-- <button @click="SignUp" class="SignUp">SignUp</button> -->
-      <input id="submit" type="submit" value="Signup" />
+      <input id="submit" type="submit" value="Sign Up" />
     </form>
   </template>
   
