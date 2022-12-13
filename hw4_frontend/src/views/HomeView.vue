@@ -1,7 +1,10 @@
 <template>
   <div class="header">
     <div class="container">
-      <button v-if="authResult" @click="Logout" class="center">Logout</button>
+      <button v-if="authResult" @click="Addpost" class="addbutton">Add post</button>
+      <button v-if="authResult" @click="Deleteposts" class="deletebutton">Delete All</button>
+      <button v-if="authResult" @click="Logout" class="deletebutton">Logout</button>
+      
 
     </div>
     <div class="post-list" >
@@ -15,10 +18,6 @@
           <!-- <span class="url"> <b>Url:</b> {{ post.urllink }} </span> <br /> -->
         </div>
       </a>
-    </div>
-    <div class="container">
-      <button v-if="authResult" @click="Addpost" class="addbutton">Add post</button>
-      <button v-if="authResult" @click="Deleteposts" class="deletebutton">Delete All</button>
     </div>
   </div>
 </template>

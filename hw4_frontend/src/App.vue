@@ -1,12 +1,27 @@
 <template>
-  <div>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contactus">Contact us</router-link>
-    </nav>
+  <div class="container">
+    <!--<layout>-->
+    <header>
+      <TopBar />
+    </header>
     <router-view />
+    <Footer />
   </div>
 </template>
+
+<script>
+import Footer from './components/Footer.vue'
+import TopBar from './components/TopBar.vue'
+
+
+export default {
+  name: 'app',
+  components: {
+    Footer,
+    TopBar,
+  }
+}
+</script>
 
 <style>
 #app {

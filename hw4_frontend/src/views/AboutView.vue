@@ -1,8 +1,14 @@
 <template>
   <div class="about">
-    <div class="text">
-      <h3>This is an about page</h3>
-      <h3>"Contains basic contact information"</h3>
+    <div class="container">
+      <h3>Contact us!</h3>
+      <p>Anett Pärismaa
+        <br>
+        Greete Kelli Aava
+        <br>
+        Meeri-Ly Muru
+      </p>
+      <br>
     </div>
   </div>
 </template>
