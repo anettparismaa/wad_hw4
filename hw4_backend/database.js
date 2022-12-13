@@ -38,14 +38,14 @@ const createTblQueryPosttable = `
     );`;
 
 execute(createTblQueryUsers).then(result => {
-    if (result) {
-        console.log('Table "users" is created');
+    if (!result) {
+        console.log('Table "users" is created.');
     }
 });
 
 execute(createTblQueryPosttable).then(result => {
-    if (result) {
-        console.log('Table "posttable" is created');
+    if (!result) {
+        console.log('Table "posttable" is created.');
     }
 });
 
